@@ -5,10 +5,9 @@ A simple and easy to use Node.js component for making NebriOS backend requests.
 <h2>Installation</h2>
 This app can be installed via npm:
 ```
-npm install briem-bixly/nodejs-nebrios
 npm install briem-bixly/nodejs-nebrios --save
 ```
-- include --save at the end to automatically add this component as a dependency for your app
+- including --save at the end will install this component and add it as a dependency in your app's package.json
 
 <h2>Usage</h2>
 The NebriOSClient must be initialized before you can use the available functions.
