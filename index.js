@@ -6,8 +6,9 @@ function NebriOSClient(instance_name){
 NebriOSClient.prototype.setInstanceName = function(instance_name){
     this.instanceName = instance_name;
 };
-NebriOSClient.prototype.api_request = function(api_module, view_name, method, payload, callback){
+NebriOSClient.prototype.api_request = function(api_module, view_name, method, payload, callback, error_callback){
     this.callback = callback;
+    this.error_callback = error_callback;
     var payload_str = "";
     if (payload !== {}){
         for (var key in payload){
@@ -36,6 +37,9 @@ NebriOSClient.prototype.api_request = function(api_module, view_name, method, pa
 };
 
 NebriOSClient.prototype.onResponse = function(error, response, body){
+    if (error && this.error_callback !== null){
+        (this.error_callback)(body);
+    }
     return (this.callback)(body);
 };
 
