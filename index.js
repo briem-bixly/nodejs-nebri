@@ -40,7 +40,9 @@ NebriOSClient.prototype.onResponse = function(error, response, body){
     if (error && this.error_callback !== null){
         (this.error_callback)(body);
     }
-    return (this.callback)(body);
+    if (this.callback !== null) {
+        return (this.callback)(body);
+    }
 };
 
 module.exports.NebriOSClient = NebriOSClient;
