@@ -2,6 +2,8 @@
 
 A simple and easy to use Node.js component for making NebriOS backend requests.
 
+This app is intended for use with a NebriOS instance. Visit https://nebrios.com to sign up for free!
+
 <h2>Installation</h2>
 This app can be installed via npm:
 ```
