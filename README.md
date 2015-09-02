@@ -31,7 +31,7 @@ var nebriclient = new nebri.NebriOSClient('instance_name');
 <h2>Examples</h2>
 ```
 var nebri = require('nodejs-nebrios');
-var nebriclient = new nebri.NebriOSClient('francois');
+var nebriclient = new nebri.NebriOSClient('instance_name');
 nebriclient.api_request('greeting_api', 'start_greeting', 'GET', {'greeting': 'hello'});
 ```
 - in the above example, we don't send a callback or error callback function
@@ -39,7 +39,7 @@ nebriclient.api_request('greeting_api', 'start_greeting', 'GET', {'greeting': 'h
 
 ```
 var nebri = require('nodejs-nebrios');
-var nebriclient = new nebri.NebriOSClient('francois');
+var nebriclient = new nebri.NebriOSClient('instance_name');
 nebriclient.api_request('greeting_api', 'start_greeting', 'GET', {'greeting': 'hello'}, function(data){
     console.log(data); //outputs {"identifier": "02fe4cee4d484b9bae044bd640bce76"}
 });
@@ -47,7 +47,7 @@ nebriclient.api_request('greeting_api', 'start_greeting', 'GET', {'greeting': 'h
 To make your code easier to read, we recommend defining a function first and passing the name as a parameter.
 ```
 var nebri = require('nodejs-nebrios');
-var nebriclient = new nebri.NebriOSClient('francois');
+var nebriclient = new nebri.NebriOSClient('instance_name');
 var callback = function(data){
     console.log(data); //outputs {"identifier": "02fe4cee4d484b9bae044bd640bce76"}
 };
@@ -55,7 +55,7 @@ nebriclient.api_request('greeting_api', 'start_greeting', 'GET', {'greeting': 'h
 ```
 ```
 var nebri = require('nodejs-nebrios');
-var nebriclient = new nebri.NebriOSClient('francois');
+var nebriclient = new nebri.NebriOSClient('instance_name');
 var callback = function(data){
     console.log(data);
 };
