@@ -1,12 +1,12 @@
 var request = require('request');
 
-function NebriOSClient(instance_name){
+function NebriClient(instance_name){
     this.instanceName = instance_name;
 }
-NebriOSClient.prototype.setInstanceName = function(instance_name){
+NebriClient.prototype.setInstanceName = function(instance_name){
     this.instanceName = instance_name;
 };
-NebriOSClient.prototype.api_request = function(api_module, view_name, method, payload, callback, error_callback){
+NebriClient.prototype.api_request = function(api_module, view_name, method, payload, callback, error_callback){
     this.callback = callback;
     this.error_callback = error_callback;
     var payload_str = "";
@@ -36,7 +36,7 @@ NebriOSClient.prototype.api_request = function(api_module, view_name, method, pa
     request(options, function(error, response, body){return me.onResponse(error, response, body);});
 };
 
-NebriOSClient.prototype.onResponse = function(error, response, body){
+NebriClient.prototype.onResponse = function(error, response, body){
     if (error && this.error_callback !== null){
         (this.error_callback)(body);
     }
@@ -45,4 +45,4 @@ NebriOSClient.prototype.onResponse = function(error, response, body){
     }
 };
 
-module.exports.NebriOSClient = NebriOSClient;
+module.exports.NebriClient = NebriClient;

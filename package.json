@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-nebrios",
+  "name": "nodejs-nebri",
   "version": "0.0.0",
-  "description": "A simple and easy to use package for making NebriOS backend requests.",
+  "description": "A simple and easy to use package for making Nebri backend requests.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
