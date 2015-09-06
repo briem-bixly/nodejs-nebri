@@ -7,8 +7,6 @@ NebriClient.prototype.setInstanceName = function(instance_name){
     this.instanceName = instance_name;
 };
 NebriClient.prototype.api_request = function(api_module, view_name, method, payload, callback, error_callback){
-    this.callback = callback;
-    this.error_callback = error_callback;
     var payload_str = "";
     if (payload !== {}){
         for (var key in payload){
@@ -29,19 +27,27 @@ NebriClient.prototype.api_request = function(api_module, view_name, method, payl
         url: url,
         method: method
     };
+    if ('basic_auth' in payload) {
+        options['auth'] = {
+            'user': payload['basic_auth']['user'],
+            'pass': payload['basic_auth']['pass'],
+            'sendImmediately': false
+        };
+    }
     if ((method === 'POST' || method === 'PUT') && payload !== {}){
         options['form'] = payload;
     }
     var me = this;
-    request(options, function(error, response, body){return me.onResponse(error, response, body);});
+    request(options, function(error, response, body){return me.onResponse(error, response, body, callback, error_callback);});
 };
 
-NebriClient.prototype.onResponse = function(error, response, body){
-    if (error && this.error_callback !== null){
-        (this.error_callback)(body);
+NebriClient.prototype.onResponse = function(error, response, body, callback, error_callback){
+    if (error){console.log('error: ', error);console.log('body: ', body);}
+    if (error && error_callback !== undefined){
+        error_callback(body);
     }
-    if (this.callback !== null) {
-        return (this.callback)(body);
+    if (callback !== undefined) {
+        callback(body);
     }
 };
 
