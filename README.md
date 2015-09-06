@@ -7,7 +7,7 @@ This app is intended for use with a Nebri instance. Visit https://nebrios.com to
 <h2>Installation</h2>
 This app can be installed via npm:
 ```
-npm install briem-bixly/nodejs-nebrios --save
+npm install briem-bixly/nodejs-nebri --save
 ```
 - including --save at the end will install this component and add it as a dependency in your app's package.json
 
